@@ -10,7 +10,7 @@ jobs:
 
     defaults:
       run:
-        working-directory: ./s3_bucket_and_dynamodb
+        working-directory: ./S3_bucket_and_dynamodb
 
     steps:
       - name: Checkout Repository
