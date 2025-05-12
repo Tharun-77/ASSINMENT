@@ -4,6 +4,8 @@ Infrastructure Deployment of Prefect 2.0 Worker on AWS ECS Fargate Using Terrafo
 # Discription
 This project demonstrates the end-to-end infrastructure deployment of a Prefect 2.0 worker using AWS ECS Fargate. It uses Terraform to provision AWS resources including VPCs, subnets, IAM roles, ECS cluster, and remote state management with S3 and DynamoDB. The setup is fully automated using GitHub Actions for CI/CD, integrating Prefect Cloud to orchestrate and monitor workflows in a serverless container environment.
 
+![Architecture](Architecture.png)
+
 ## 1. Purpose of the Setup
 
 The purpose of this setup is to provision and deploy a **scalable, secure, and production-ready infrastructure on AWS** to run a **Prefect 2.0 Worker** using **ECS Fargate**.
@@ -104,8 +106,8 @@ Follow these steps to deploy the Prefect Worker infrastructure on AWS using Terr
 step 1. **Fork or Clone this Repo**
 
    ```bash
-   git clone https://github.com/your-username/prefect-ecs-infra.git
-   cd prefect-ecs-infra
+   git clone https://github.com/Tharun-77/ASSINMENT
+   cd ASSINMENT
    ```
 step 2. **Set GitHub Secrets**
 In your repo's Settings → Secrets and variables → Actions, set the following secrets:
