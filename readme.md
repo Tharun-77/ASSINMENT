@@ -149,8 +149,8 @@ GitHub Actions will handle the rest.
 Start by Downloading the files required:
 
 ```bash
-git clone https://github.com/your-username/prefect-ecs-infra.git
-cd prefect-ecs-infra
+git clone  git clone https://github.com/Tharun-77/ASSINMENT
+cd ASSINMENT
 ```
 
 ## Step 2. Configure AWS Credentials
