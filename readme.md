@@ -6,6 +6,8 @@ The worker is part of a **work pool** that connects to **Prefect Cloud**, enabli
 
 By leveraging **Infrastructure as Code (IaC)** with **Terraform**, this setup ensures **reproducibility**, **automation**, and easier **management** of the following components:
 
+This infrastructure is fully automated using **Terraform** and **GitHub Actions**, following Infrastructure as Code (IaC) principles and DevOps best practices. The Terraform backend uses **S3 for remote state storage** and **DynamoDB for state locking**, ensuring collaborative and consistent deployment workflows.
+
 ---
 
 ### Key Components
@@ -26,9 +28,17 @@ By leveraging **Infrastructure as Code (IaC)** with **Terraform**, this setup en
   Deploying the Prefect worker container using the official image:  
   `prefecthq/prefect:2-latest`
 
-- **Prefect Cloud Integration**  
-  Centralized orchestration and observability of Prefect flows through **Prefect Cloud**.
+- **CI/CD Pipeline**  
+  - Automated provisioning with **GitHub Actions**  
+  - Terraform format, plan, and apply workflows on push
 
+- **State Management**  
+  - Remote backend with **S3**  
+  - **DynamoDB** for state locking
+
+- **Prefect Cloud Integration**  
+  - Work pool `ecs-work-pool` connected  
+  - Centralized orchestration via Prefect UI
 ---
 
 ## Benefits
@@ -83,15 +93,57 @@ Terraform’s **robust features** and powerful **infrastructure lifecycle manage
 
 Follow these steps to deploy the Prefect Worker infrastructure on AWS using Terraform:
 
----
+### Option 1: CI/CD via GitHub Actions (Recommended)
+
+step 1. **Fork or Clone this Repo**
+
+   ```bash
+   git clone https://github.com/your-username/prefect-ecs-infra.git
+   cd prefect-ecs-infra
+   ```
+step 2. **Set GitHub Secrets**
+In your repo's Settings → Secrets and variables → Actions, set the following secrets:
+
+AWS_ACCESS_KEY_ID
+
+AWS_SECRET_ACCESS_KEY
+
+Any custom TF_VAR_* secrets you’ve added in variables.tf
+
+step 3. **Review GitHub Actions Workflow**
+File: .github/workflows/terraform.yml
+
+This workflow runs:
+
+terraform fmt -check
+
+terraform init -backend-config
+
+terraform validate
+
+terraform plan
+
+terraform apply 
+
+step 4. **Push to Trigger Deployment**
+
+```bash
+git add .
+git commit -m "Trigger deployment"
+git push origin main
+```
+GitHub Actions will handle the rest.
+
+# Option 2: Manual Deployment (Local Machine)
 
 ## Step 1. Downloading the required files 
 
 Start by Downloading the files required:
 
-  Download the file from DRIVE LINK 
-   
-  cd to the file loacation
+```bash
+git clone https://github.com/your-username/prefect-ecs-infra.git
+cd prefect-ecs-infra
+```
 
 ## Step 2. Configure AWS Credentials
 
