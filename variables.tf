@@ -31,8 +31,7 @@ variable "prefect_api_url" {
 
 variable "secret_arn" {
   type    = string
-  default = "arn:aws:secretsmanager:ap-south-1:638417784865:secret:PERFECT_API_KEY-zqL70j"
-}
+  default = "arn:aws:secretsmanager:ap-south-1:638417784865:secret:PERFECT_API_KEY_1-DJFQOH"
 
 variable "sg_name" {
   type    = string
