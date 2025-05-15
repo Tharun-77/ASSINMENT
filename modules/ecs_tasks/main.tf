@@ -46,7 +46,7 @@ resource "aws_ecs_task_definition" "prefect_worker" {
       #Giving the Secrect for API-KEY  
       secrets = [
         {
-          name      = "PERFECT_API_KEY"
+          name      = "PERFECT_API_KEY_1"
           valueFrom = var.secret_arn
         }
       ]
